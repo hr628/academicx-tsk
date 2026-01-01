@@ -69,6 +69,7 @@ class FirestoreManager @Inject constructor() {
     
     /**
      * Listen to user's tasks in Firestore
+     * TODO: Implement proper Firestore document to Task conversion when enabling cloud sync
      */
     fun listenToTasks(userId: String): Flow<List<Task>> = callbackFlow {
         val listener = firestore.collection("users")
@@ -80,10 +81,9 @@ class FirestoreManager @Inject constructor() {
                     return@addSnapshotListener
                 }
                 
-                val tasks = snapshot?.documents?.mapNotNull { doc ->
-                    // Convert Firestore document to Task (simplified)
-                    null // Would need proper conversion logic
-                } ?: emptyList()
+                // TODO: Implement proper document-to-Task conversion
+                // For now, this returns an empty list as cloud sync is optional
+                val tasks = emptyList<Task>()
                 
                 trySend(tasks)
             }

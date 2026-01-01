@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    // Firebase plugin - set to "apply true" and add google-services.json for cloud sync
     id("com.google.gms.google-services") apply false
 }
 
